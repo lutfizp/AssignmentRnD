@@ -15,7 +15,7 @@ The main review entry point is the GitHub Wiki:
 - [webchallenges-part1](https://github.com/lutfizp/AssignmentRnD/tree/master/webchallenges-part1)
 - [webchallenges-part2](https://github.com/lutfizp/AssignmentRnD/tree/master/webchallenges-part2)
 - [webchallenges-final](https://github.com/lutfizp/AssignmentRnD/tree/master/webchallenges-final)
-- [wiki](https://github.com/lutfizp/AssignmentRnD/tree/master/wiki)
+- [wiki](https://github.com/lutfizp/AssignmentRnD/wiki)
 
 ## Direct Answer Locations
 
