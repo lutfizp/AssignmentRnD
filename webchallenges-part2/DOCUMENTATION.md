@@ -17,9 +17,9 @@ This document explains the hardening work by showing what Part 1 did, what was c
 
 ### 1. Insecure File Upload Handling
 
-In Part 1, the file upload route in [app/api/files/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/app/api/files/route.ts) accepted any file as long as it existed and did not exceed the size limit. The code trusted `file.type`, derived the extension from `file.name`, generated a filename from timestamp and random number, and wrote the buffer directly to disk with `fs.writeFileSync(...)`.
+In Part 1, the file upload route in [app/api/files/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/app/api/files/route.ts) accepted any file as long as it existed and did not exceed the size limit. The code trusted `file.type`, derived the extension from `file.name`, generated a filename from timestamp and random number, and wrote the buffer directly to disk with `fs.writeFileSync(...)`.
 
-The avatar route in [app/api/users/me/avatar/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/app/api/users/me/avatar/route.ts) had the same weakness. It only checked `file.type.startsWith("image/")`, then always stored the avatar with a `.jpg` suffix regardless of what was actually uploaded.
+The avatar route in [app/api/users/me/avatar/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/app/api/users/me/avatar/route.ts) had the same weakness. It only checked `file.type.startsWith("image/")`, then always stored the avatar with a `.jpg` suffix regardless of what was actually uploaded.
 
 This was risky because:
 
@@ -30,7 +30,7 @@ This was risky because:
 
 ### 2. Missing Rate Limiting
 
-In Part 1, there was no throttling on sensitive endpoints. The login route in [app/api/auth/login/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/app/api/auth/login/route.ts) processed every request immediately after JSON parsing. The same pattern existed for registration, uploads, avatar uploads, and admin routes.
+In Part 1, there was no throttling on sensitive endpoints. The login route in [app/api/auth/login/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/app/api/auth/login/route.ts) processed every request immediately after JSON parsing. The same pattern existed for registration, uploads, avatar uploads, and admin routes.
 
 That meant the system had no built-in protection against:
 
@@ -41,7 +41,7 @@ That meant the system had no built-in protection against:
 
 ### 3. Weak Input Validation and Sanitization
 
-In Part 1, validation existed, but it was too permissive. In [lib/schemas.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/lib/schemas.ts):
+In Part 1, validation existed, but it was too permissive. In [lib/schemas.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/lib/schemas.ts):
 
 - `RegisterBody.name` was just `zod.string()`
 - `LoginBody.password` was just `zod.string()`
@@ -58,11 +58,11 @@ So even though ownership checks existed, the system did not additionally verify 
 
 ### 5. Limited Security Observability
 
-In Part 1, [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/lib/activityLogger.ts) only inserted rows into the database. It did not support severity levels, request IDs, or structured security-oriented logging. The result was still useful for history, but weaker for investigation and monitoring.
+In Part 1, [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/lib/activityLogger.ts) only inserted rows into the database. It did not support severity levels, request IDs, or structured security-oriented logging. The result was still useful for history, but weaker for investigation and monitoring.
 
 ### 6. Unsafe JWT Secret Fallback
 
-In Part 1, [lib/auth.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/lib/auth.ts) resolved the secret like this:
+In Part 1, [lib/auth.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/lib/auth.ts) resolved the secret like this:
 
 ```ts
 const JWT_SECRET = process.env.SESSION_SECRET || "default_build_secret_change_me_in_production";
@@ -74,7 +74,7 @@ That fallback is acceptable for local development convenience, but unsafe if a p
 
 ### 1. Secure File Upload Handling
 
-Part 2 introduces [lib/uploads.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/uploads.ts) and moves file handling behind dedicated helpers.
+Part 2 introduces [lib/uploads.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/uploads.ts) and moves file handling behind dedicated helpers.
 
 In Part 1, the upload route wrote files directly:
 
@@ -109,13 +109,13 @@ This change matters because Part 2 now:
 - separates avatar policy from general file policy
 - validates filesystem path containment before write, read, or delete
 
-Avatar handling was also corrected. In Part 1, the avatar route always generated a `.jpg` filename. In Part 2, the avatar route in [app/api/users/me/avatar/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/users/me/avatar/route.ts) validates the real content first and stores the avatar using the validated extension.
+Avatar handling was also corrected. In Part 1, the avatar route always generated a `.jpg` filename. In Part 2, the avatar route in [app/api/users/me/avatar/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/users/me/avatar/route.ts) validates the real content first and stores the avatar using the validated extension.
 
 ### 2. Rate Limiting and Abuse Protection
 
-Part 2 adds [lib/rate-limit.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/rate-limit.ts) and applies it directly in sensitive routes.
+Part 2 adds [lib/rate-limit.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/rate-limit.ts) and applies it directly in sensitive routes.
 
-In Part 1, the login route moved from parsing to credential checks immediately. In Part 2, [app/api/auth/login/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/auth/login/route.ts) first checks:
+In Part 1, the login route moved from parsing to credential checks immediately. In Part 2, [app/api/auth/login/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/auth/login/route.ts) first checks:
 
 ```ts
 const limit = checkRateLimit({
@@ -140,7 +140,7 @@ Compared with Part 1, Part 2 is now resistant to repeated high-volume abuse on t
 
 ### 3. Input Validation and Sanitization
 
-Part 2 tightens request schemas in [lib/schemas.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/schemas.ts) and centralizes cleanup logic in [lib/security.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/security.ts).
+Part 2 tightens request schemas in [lib/schemas.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/schemas.ts) and centralizes cleanup logic in [lib/security.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/security.ts).
 
 In Part 1, the profile update schema looked like this:
 
@@ -199,11 +199,11 @@ The same is true for reads. Part 1 used `fs.readFileSync(file.path)`. Part 2 use
 
 This means Part 2 protects both the authorization decision and the filesystem operation that follows it.
 
-Part 2 also adds admin self-protection. In [app/api/admin/users/[id]/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/admin/users/%5Bid%5D/route.ts), an admin can no longer remove their own admin role. That check did not exist in Part 1.
+Part 2 also adds admin self-protection. In [app/api/admin/users/[id]/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/admin/users/%5Bid%5D/route.ts), an admin can no longer remove their own admin role. That check did not exist in Part 1.
 
 ### 5. Logging and Monitoring Improvements
 
-In Part 1, [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part1/lib/activityLogger.ts) only inserted audit rows into the database:
+In Part 1, [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part1/lib/activityLogger.ts) only inserted audit rows into the database:
 
 ```ts
 await db.insert(activityLogsTable).values({
@@ -214,11 +214,11 @@ await db.insert(activityLogsTable).values({
 });
 ```
 
-In Part 2, [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/activityLogger.ts) adds:
+In Part 2, [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/activityLogger.ts) adds:
 
 - severity support
 - request ID support
-- structured logging through [lib/logger.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/logger.ts)
+- structured logging through [lib/logger.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/logger.ts)
 - error handling if audit persistence fails
 
 Routes also now use `getRequestContext(...)` from `lib/security.ts`, so security events consistently carry:
@@ -231,7 +231,7 @@ This makes Part 2 much easier to monitor when something suspicious happens, such
 
 ### 6. Safer Secret Handling and Security Headers
 
-JWT handling in Part 2 is safer than Part 1. Instead of resolving the secret once with a silent fallback, [lib/auth.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/auth.ts) uses `getJwtSecret()`.
+JWT handling in Part 2 is safer than Part 1. Instead of resolving the secret once with a silent fallback, [lib/auth.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/auth.ts) uses `getJwtSecret()`.
 
 The improvement is simple but important:
 
@@ -239,7 +239,7 @@ The improvement is simple but important:
 - if it is missing in production, the app throws
 - if it is missing in development, the fallback is still available but logged as a warning
 
-Part 2 also adds global response headers in [next.config.mjs](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/next.config.mjs), including:
+Part 2 also adds global response headers in [next.config.mjs](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/next.config.mjs), including:
 
 - `Referrer-Policy`
 - `X-Content-Type-Options`
@@ -266,16 +266,16 @@ File-serving routes also add `nosniff` and safer cache behavior. Part 1 had none
 
 The most important Part 2 files are:
 
-- [lib/uploads.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/uploads.ts)
-- [lib/security.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/security.ts)
-- [lib/rate-limit.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/rate-limit.ts)
-- [lib/schemas.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/schemas.ts)
-- [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/activityLogger.ts)
-- [lib/auth.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/lib/auth.ts)
-- [app/api/files/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/files/route.ts)
-- [app/api/auth/login/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/auth/login/route.ts)
-- [app/api/auth/register/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/auth/register/route.ts)
-- [app/api/admin/users/[id]/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-part2/app/api/admin/users/%5Bid%5D/route.ts)
+- [lib/uploads.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/uploads.ts)
+- [lib/security.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/security.ts)
+- [lib/rate-limit.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/rate-limit.ts)
+- [lib/schemas.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/schemas.ts)
+- [lib/activityLogger.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/activityLogger.ts)
+- [lib/auth.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/lib/auth.ts)
+- [app/api/files/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/files/route.ts)
+- [app/api/auth/login/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/auth/login/route.ts)
+- [app/api/auth/register/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/auth/register/route.ts)
+- [app/api/admin/users/[id]/route.ts](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/app/api/admin/users/%5Bid%5D/route.ts)
 
 Together, these changes satisfy the Part 2 objective. The codebase identifies more than three security weaknesses, implements secure upload validation, adds rate limiting, and introduces additional controls in validation, access control, observability, and runtime configuration safety.
 

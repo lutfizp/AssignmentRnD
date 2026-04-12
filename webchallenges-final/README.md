@@ -219,5 +219,5 @@ psql postgresql://sv_adminnexacore:sv_nexacore05@localhost:5432/securevault -c \
 
 For the final build summary and the remediation notes, see:
 
-- [DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/main/webchallenges-final/DOCUMENTATION.md)
-- [Root README](https://github.com/lutfizp/AssignmentRnD/blob/main/README.md)
+- [DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-final/DOCUMENTATION.md)
+- [Root README](https://github.com/lutfizp/AssignmentRnD/blob/master/README.md)
