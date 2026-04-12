@@ -32,3 +32,4 @@ The main review entry point is the GitHub Wiki:
 - Part 2 technical documentation: [webchallenges-part2/DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-part2/DOCUMENTATION.md)
 - Final setup and project guide: [webchallenges-final/README.md](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-final/README.md)
 - Final technical documentation: [webchallenges-final/DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-final/DOCUMENTATION.md)
+- Exploit usage guideline: [exploit/README.md](https://github.com/lutfizp/AssignmentRnD/blob/master/exploit/README.md)
