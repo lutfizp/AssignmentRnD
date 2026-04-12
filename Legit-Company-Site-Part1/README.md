@@ -201,4 +201,4 @@ psql postgresql://sv_adminnexacore:sv_nexacore05@localhost:5432/securevault -c \
 
 ## Documentation
 
-For a fuller technical walkthrough of the Part 1 implementation, see [DOCUMENTATION.md](C:/Users/lutfi/Downloads/AssignmentRnD/Legit-Company-Site-Part1/DOCUMENTATION.md).
+For a fuller technical walkthrough of the Part 1 implementation, see [DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/main/Legit-Company-Site-Part1/DOCUMENTATION.md).

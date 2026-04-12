@@ -208,5 +208,5 @@ psql postgresql://sv_adminnexacore:sv_nexacore05@localhost:5432/securevault -c \
 
 For the full Part 2 hardening walkthrough, see:
 
-- [DOCUMENTATION.md](C:/Users/lutfi/Downloads/AssignmentRnD/Legit-Company-Site-PART2/DOCUMENTATION.md)
-- [part2.md](C:/Users/lutfi/Downloads/AssignmentRnD/part2.md)
+- [DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/main/Legit-Company-Site-PART2/DOCUMENTATION.md)
+- [Root README](https://github.com/lutfizp/AssignmentRnD/blob/main/README.md)
