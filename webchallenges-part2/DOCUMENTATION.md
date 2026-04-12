@@ -4,7 +4,7 @@
 
 Part 2 hardens the Part 1 application without changing its core business features. The system still provides JWT-based authentication, profile management, file uploads, admin access, and audit logs. The difference is that Part 2 treats those same features with stronger security boundaries.
 
-Based on `ObjectivePart2.txt`, this phase had four goals:
+this phase had four goals:
 
 1. Identify at least three vulnerabilities in the existing implementation
 2. Implement secure file upload handling

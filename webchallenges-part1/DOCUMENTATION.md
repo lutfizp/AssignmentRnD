@@ -2,7 +2,7 @@
 
 ## 1. Purpose and Scope
 
-This document explains how the Part 1 application satisfies the requirements defined in `Objective.txt`, how to run it, how to verify every required capability, and which parts of the codebase implement each feature.
+This document explains how the Part 1 application satisfies the requirements, how to run it, how to verify every required capability, and which parts of the codebase implement each feature.
 
 The application is a full-stack Next.js platform with:
 

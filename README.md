@@ -8,7 +8,9 @@ The main review entry point is the GitHub Wiki:
 - [Part 1 - Build a Web Application](https://github.com/lutfizp/AssignmentRnD/wiki/Part-1-%E2%80%90-Build-a-Web-Application)
 - [Part 2 - Security Design and Hardening](https://github.com/lutfizp/AssignmentRnD/wiki/Part-2-%E2%80%90-Security-Design-and-Hardening)
 - [Part 3 - Exploit Your Own Application](https://github.com/lutfizp/AssignmentRnD/wiki/Part-3-%E2%80%90-Exploit-Your-Own-Application)
-- [Final - Patched Build and Pentest Placeholder](https://github.com/lutfizp/AssignmentRnD/wiki/Final---Patched-Build-and-Pentest-Placeholder)
+- [Final - Patched Build](https://github.com/lutfizp/AssignmentRnD/wiki/Final-%E2%80%90-Patched-Build)
+- [Bonus Question](https://github.com/lutfizp/AssignmentRnD/wiki/Bonus-Question)
+
 
 ## Repository Structure
 
@@ -23,6 +25,7 @@ The main review entry point is the GitHub Wiki:
 - Part 2 answer: [GitHub Wiki - Part 2](https://github.com/lutfizp/AssignmentRnD/wiki/Part-2-%E2%80%90-Security-Design-and-Hardening)
 - Part 3 answer: [GitHub Wiki - Part 3](https://github.com/lutfizp/AssignmentRnD/wiki/Part-3-%E2%80%90-Exploit-Your-Own-Application)
 - Final answer: [GitHub Wiki - Final](https://github.com/lutfizp/AssignmentRnD/wiki/Final-%E2%80%90-Patched-Build)
+- Bonus answer: [GitHub Wiki - Bonus Question](https://github.com/lutfizp/AssignmentRnD/wiki/Bonus-Question)
 
 ## Supporting Documents
 
