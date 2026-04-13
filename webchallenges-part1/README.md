@@ -54,6 +54,12 @@ docker-compose down -v
 docker-compose up --build -d
 ```
 
+### Demo Accounts
+
+- Admin: `admin@nexacore.com` / `@nexacore05`
+- Seeded users: `john@gmail.com`, `robert@gmail.com`, `richard@gmail.com`
+- Seeded user password pattern: `<user>@1234`
+
 ### Creating an Admin Account in Docker
 
 1. Register an account at `http://localhost:3000/register`

@@ -36,3 +36,9 @@ The main review entry point is the GitHub Wiki:
 - Final setup and project guide: [webchallenges-final/README.md](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-final/README.md)
 - Final technical documentation: [webchallenges-final/DOCUMENTATION.md](https://github.com/lutfizp/AssignmentRnD/blob/master/webchallenges-final/DOCUMENTATION.md)
 - Exploit usage guideline: [exploit/README.md](https://github.com/lutfizp/AssignmentRnD/blob/master/exploit/README.md)
+
+## Demo Accounts
+
+- Admin: `admin@nexacore.com` / `@nexacore05`
+- Seeded users: `john@gmail.com`, `robert@gmail.com`, `richard@gmail.com`
+- Seeded user password pattern: `<user>@1234`
